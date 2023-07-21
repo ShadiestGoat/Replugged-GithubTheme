@@ -1,0 +1,160 @@
+@use 'github' as *;
+
+$chat-border-color: $gray7;
+$profile-border-radius: 6px;
+
+:root {
+    --search-popout-option-non-text-color: #{$gray2};
+    --search-popout-option-filter-color:   #{$gray2};
+    --search-popout-option-answer-color:   #{$gray2};
+    --search-popout-date-picker-hint-text: #{$gray2};
+    --channeltextarea-background:          #{$gray9};
+    
+    --text-links:  #{$blue2};
+    --text-normal: #{$gray1};
+    --text-muted:  #{$gray2};
+    
+    --header-primary:   #{$gray1};
+    --header-secondary: #{$gray2};
+
+    --background-primary:       #{$gray9};
+    --background-secondary:     #{$gray8};
+    --background-secondary-alt: #{$gray8};
+    --background-tertiary:      #{$gray7};
+    --background-accent:        #{$gray8};
+
+    --text-positive: #{$green2};
+
+    --background-modifier-selected: #{$gray7};
+    --background-modifier-hover:    #{$gray6};
+    --background-modifier-active:   #{$gray6};
+    --background-modifier-accent:   #{$gray6};
+    
+    --chanel-icon: #{$blue0};
+}
+
+// Set the color of the channel names to be not white <3
+ul.content-yjf30S {
+    --channels-default: #{$blue0};
+}
+
+.actionIcon-2sw4Sl, .iconContainer-21RCa3 {
+    svg {
+        color: $blue0;
+    }
+}
+
+// Set default username color to be green in the member list
+.username-3_PJ5r.desaturateUserColors-1O-G89 {
+    color: $green0;
+}
+
+// Remove the gift nitro button
+*[aria-label="Send a gift"] {
+    display: none;
+}
+
+// Add a chat border 
+.channelTextArea-1FufC0.channelTextArea-1VQBuV {
+    border: $chat-border-color solid 4px;
+}
+
+// Add a border onto the reply bar
+.clipContainer-31nYlH {
+    border-top: $chat-border-color solid 3px;
+}
+
+// Round corners of your profile menu
+.container-YkUktl {
+    border-top-left-radius:  $profile-border-radius;
+    border-top-right-radius: $profile-border-radius;
+}
+
+// Add a little glow to the profile menu
+.panels-3wFtMD {
+    box-shadow: 0 0 15px -5px $green2;
+}
+
+// change the color of the top bar
+.theme-dark .themed-Hp1KC_ {
+    background: $gray8;
+
+    >.children-3xh0VB::after {
+        background: none;
+    }
+}
+
+// the badge saying "aka X name" should be darkened
+.akaBadge-3i7V3p {
+    background: $gray9;
+    padding: 3px 6px;
+    box-sizing: content-box;
+}
+
+// Make hover message obvious
+.messageListItem-ZZ7v6g {
+
+    // The embed should have a dark 
+    // article.* so that it only covers stuff like videos, not gifs
+    article.embedWrapper-1MtIDg {
+        background: $gray8;
+    }
+
+    // contrast the edit area
+    .channelTextArea-1VQBuV > div {
+        background: $gray8;
+    }
+
+    &:hover {
+        background: $gray8;
+
+        .channelTextArea-1VQBuV > div {
+            background: $gray9;
+        }
+
+        // flip the color of the embed to be the previous color of the message
+        article.embedWrapper-1MtIDg {
+            background: $gray9;
+        }
+    }
+}
+
+// Match message hover color in buttons
+.wrapper-2vIMkT {
+    background: $gray8;
+}
+
+.messageContent-2t3eCI {
+    h1 {
+        color: $green1;
+    }
+    h2 {
+        color: $blue2;
+    }
+}
+
+.contentWrapper-3vHNP2 {
+    background: $gray7;
+
+    .packHeader-w9jpYl, .header-1ULbqO {
+        background: none;
+    }
+}
+
+.root-1CAIjD {
+    --modal-background: #{$gray7};
+    --modal-footer-background: #{$gray8};
+    --header-secondary: #{$blue2};
+
+    h1 {
+        color: $green1 !important;
+    }
+
+    button {
+        background: $gray7;
+    }
+
+    .defaultColor-1EVLSt {
+        color: var(--header-secondary);
+    }
+}

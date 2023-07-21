@@ -1,10 +1,9 @@
 {
-  "name": "theme-template",
+  "name": "replugged-github-dark",
   "version": "1.0.0",
-  "description": "A theme template",
+  "description": "A theme for replugged in the style of github dark",
   "engines": {
-    "node": ">=18.0.0",
-    "pnpm": ">=8.0.0"
+    "node": ">=14.0.0"
   },
   "scripts": {
     "build": "replugged build theme",
@@ -14,13 +13,20 @@
     "lint:fix": "prettier ./src --write"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": {
+    "name": "Lucy Dryaeva",
+    "email": "shady@shadygoat.eu",
+    "url": "https://shadygoat.eu"
+  },
+  "license": "MIT",
   "devDependencies": {
     "@parcel/config-default": "^2.8.3",
     "@parcel/core": "^2.8.3",
-    "@types/node": "^18.15.11",
-    "prettier": "^2.8.7",
-    "replugged": "^4.4.2"
+    "@types/node": "^18.11.15",
+    "prettier": "^2.8.1",
+    "replugged": "^4.2.1"
+  },
+  "dependencies": {
+    "@parcel/transformer-sass": "^2.8.3"
   }
 }
