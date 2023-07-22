@@ -1,5 +1,5 @@
 {
-  "id": "dev.shadygoat.GithubDark",
+  "id": "eu.shadygoat.GithubDark",
   "name": "Github Dark",
   "description": "The github dark color scheme",
   "author": {
@@ -9,10 +9,15 @@
   },
   "version": "1.0.0",
   "updater": {
-    "type": "github",
-    "id": "ShadiestGoat/Replugged-GithubTheme"
+    "type": "store",
+    "id": "eu.shadygoat.GithubDark"
   },
   "license": "MIT",
   "type": "replugged-theme",
-  "main": "src/main.scss"
+  "main": "src/main.scss",
+  "source": "https://github.com/ShadiestGoat/Replugged-GithubTheme",
+  "image": [
+    "https://media.discordapp.net/attachments/735886276070342696/1132317813168676974/image.png?width=1248&height=702",
+    "https://media.discordapp.net/attachments/735886276070342696/1132317437002526720/image.png?width=1248&height=702"
+  ]
 }

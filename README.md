@@ -1,12 +1,12 @@
 # Github Dark Theme
 
-[![Install in Replugged](https://img.shields.io/badge/-Install%20in%20Replugged-blue?style=for-the-badge&logo=none)](https://replugged.dev/install?identifier=ShadiestGoat/Replugged-GithubTheme&source=github)
+[![Install in Replugged](https://img.shields.io/badge/-Install%20in%20Replugged-blue?style=for-the-badge&logo=none)](https://replugged.dev/install?identifier=eu.shadygoat.GithubDark)
 
 This is a small theme to make your discord look like github <3
 
 ## Install
 
-[![Install in Replugged](https://img.shields.io/badge/-Install%20in%20Replugged-blue?style=for-the-badge&logo=none)](https://replugged.dev/install?identifier=ShadiestGoat/Replugged-GithubTheme&source=github)
+[![Install in Replugged](https://img.shields.io/badge/-Install%20in%20Replugged-blue?style=for-the-badge&logo=none)](https://replugged.dev/install?identifier=eu.shadygoat.GithubDark)
 
 Either use the above link, or, proceed to manual installation
 
