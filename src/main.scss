@@ -1,7 +1,8 @@
 @use "github" as *;
 
 @function wildcardGen($class, $prefix: "", $suffix: "") {
-  @return $prefix + "[class^=\"" + $class + "-\"]" + $suffix + ", " + $prefix + "[class*=\" " + $class + "-\"]" + $suffix
+  @return $prefix + '[class^="'+ $class + '-"]'+ $suffix + ", " + $prefix + '[class*=" '+ $class + '-"]'+
+    $suffix;
 }
 
 $chat-border-color: $gray7;
@@ -75,7 +76,8 @@ $profile-border-radius: 12px;
   box-shadow: 0 0 15px -5px $green2;
 
   // Round corners of your profile menu
-  &, #{wildcardGen("container")} {
+  &,
+  #{wildcardGen("container")} {
     border-top-left-radius: $profile-border-radius;
     border-top-right-radius: $profile-border-radius;
   }
@@ -85,7 +87,7 @@ $profile-border-radius: 12px;
 #{wildcardGen("title")} {
   #{wildcardGen("themed", "&")} {
     background: $gray8 !important;
-  
+
     // remove the gradient thing on the side of the top bar
     > .children-3xh0VB::after {
       background: none;
@@ -102,7 +104,6 @@ $profile-border-radius: 12px;
 
 // Make hover message obvious
 #{wildcardGen("messageListItem")} {
-
   // Make headings their special color
   h1 {
     color: var(--heading-1-color);
@@ -164,7 +165,8 @@ $profile-border-radius: 12px;
 #{wildcardGen("contentWrapper")} {
   background: $gray7;
 
-  #{wildcardGen("packHeader")}, #{wildcardGen("header")} {
+  #{wildcardGen("packHeader")},
+  #{wildcardGen("header")} {
     background: none;
   }
 }
@@ -173,11 +175,11 @@ $profile-border-radius: 12px;
   --modal-background: #{$gray7};
   --modal-footer-background: #{$gray8};
   --header-secondary: var(--heading-2-color);
-  
+
   h1 {
     color: $green1 !important;
   }
-  
+
   button {
     background: $gray7;
   }
@@ -194,7 +196,8 @@ $profile-border-radius: 12px;
 #{wildcardGen("autocomplete")} {
   background: $gray8 !important;
 
-  &, #{wildcardGen("wrapper", "ul > ")} {
+  &,
+  #{wildcardGen("wrapper", "ul > ")} {
     background: $gray8 !important;
   }
 }
