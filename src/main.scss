@@ -1,7 +1,11 @@
 @use "github" as *;
 
+@function wildcardGen($class, $prefix: "", $suffix: "") {
+  @return $prefix + "[class^=\"" + $class + "-\"]" + $suffix + ", " + $prefix + "[class*=\" " + $class + "-\"]" + $suffix
+}
+
 $chat-border-color: $gray7;
-$profile-border-radius: 6px;
+$profile-border-radius: 12px;
 
 :root {
   --search-popout-option-non-text-color: #{$gray2};
@@ -31,22 +35,21 @@ $profile-border-radius: 6px;
   --background-modifier-accent: #{$gray6};
 
   --chanel-icon: #{$blue0};
-}
-
-// Set the color of the channel names to be not white <3
-ul.content-yjf30S {
   --channels-default: #{$blue0};
+
+  --heading-1-color: #{$green1};
+  --heading-2-color: #{$blue2};
 }
 
-.actionIcon-2sw4Sl,
-.iconContainer-21RCa3 {
+#{wildcardGen("actionIcon")},
+#{wildcardGen("iconContainer")} {
   svg {
     color: $blue0;
   }
 }
 
 // Set default username color to be green in the member list
-.username-3_PJ5r.desaturateUserColors-1O-G89 {
+#{wildcardGen("desaturateUserColors")} {
   color: $green0;
 }
 
@@ -55,120 +58,143 @@ ul.content-yjf30S {
   display: none;
 }
 
-// Add a chat border
-.channelTextArea-1FufC0.channelTextArea-1VQBuV {
-  border: $chat-border-color solid 4px;
+// Add a border around the "new message" input AND ONLY AROUND THAT
+#{wildcardGen("form", "")} {
+  #{wildcardGen("channelTextArea", " > ")} {
+    border: $chat-border-color solid 4px;
+  }
 }
 
-// Add a border onto the reply bar
-.clipContainer-31nYlH {
+// Add a border onto the reply bar (I think the other border is overwritten? Not 100% sure)
+#{wildcardGen("clipContainer")} {
   border-top: $chat-border-color solid 3px;
 }
 
-// Round corners of your profile menu
-.container-YkUktl {
-  border-top-left-radius: $profile-border-radius;
-  border-top-right-radius: $profile-border-radius;
-}
-
 // Add a little glow to the profile menu
-.panels-3wFtMD {
+[aria-label="User area"] {
   box-shadow: 0 0 15px -5px $green2;
+
+  // Round corners of your profile menu
+  &, #{wildcardGen("container")} {
+    border-top-left-radius: $profile-border-radius;
+    border-top-right-radius: $profile-border-radius;
+  }
 }
 
 // change the color of the top bar
-.theme-dark .themed-Hp1KC_ {
-  background: $gray8;
-
-  > .children-3xh0VB::after {
-    background: none;
+#{wildcardGen("title")} {
+  #{wildcardGen("themed", "&")} {
+    background: $gray8 !important;
+  
+    // remove the gradient thing on the side of the top bar
+    > .children-3xh0VB::after {
+      background: none;
+    }
   }
 }
 
 // the badge saying "aka X name" should be darkened
-.akaBadge-3i7V3p {
+#{wildcardGen("akaBadge")} {
   background: $gray9;
   padding: 3px 6px;
   box-sizing: content-box;
 }
 
 // Make hover message obvious
-.messageListItem-ZZ7v6g {
-  // The embed should have a dark
-  // article.* so that it only covers stuff like videos, not gifs
-  article.embedWrapper-1MtIDg {
-    background: $gray8;
+#{wildcardGen("messageListItem")} {
+
+  // Make headings their special color
+  h1 {
+    color: var(--heading-1-color);
+  }
+  h2 {
+    color: var(--heading-2-color);
   }
 
-  // contrast the edit area
-  .channelTextArea-1VQBuV > div {
-    background: $gray8;
+  --inner-color: #{$gray8};
+  --outer-color: #{$gray9};
+
+  background: var(--outer-color);
+
+  // Make the edit area, embeds, inline code, code blocks, and spoilers be considered inner content (and therefor change color on cover)
+  #{wildcardGen("channelTextArea", "", " > div")},
+  #{wildcardGen("embedWrapper", "article")},
+  code,
+  #{wildcardGen("spoilerMarkdownContent")} {
+    background: var(--inner-color);
+  }
+
+  // Make the stuff mentioned above be colored with the outer color when editing it in the message
+  #{wildcardGen("channelTextArea")} {
+    > #{wildcardGen("scrollableContainer")} {
+      border: $chat-border-color solid 4px;
+    }
+
+    #{wildcardGen("embedWrapper", "article")},
+    #{wildcardGen("inlineCode")},
+    #{wildcardGen("codeLine")},
+    // Code blocks need some... extra setup... this is the ``` parts
+    #{wildcardGen("codeBlockSyntax", "div[data-slate-node=\"element\"]:has(>span>span", ")")},
+    #{wildcardGen("after_inlineCode")},
+    #{wildcardGen("before_inlineCode")},
+    #{wildcardGen("spoilerMarkdownContent")} {
+      background: var(--outer-color);
+    }
   }
 
   &:hover {
-    background: $gray8;
-
-    .channelTextArea-1VQBuV > div {
-      background: $gray9;
-    }
-
-    // flip the color of the embed to be the previous color of the message
-    article.embedWrapper-1MtIDg {
-      background: $gray9;
-    }
+    --inner-color: #{$gray9};
+    --outer-color: #{$gray8};
   }
 }
 
-// Match message hover color in buttons
-.wrapper-2vIMkT {
+// Make the 'no typing indicator' and the emote button be at the bottom when editing a message
+#{wildcardGen("inner")} {
+  #{wildcardGen("buttons")} {
+    align-self: end;
+  }
+}
+
+// Match message hover color in "Message Actions" buttons
+[aria-label="Message Actions"] > div {
   background: $gray8;
 }
 
-.messageContent-2t3eCI {
-  h1 {
-    color: $green1;
-  }
-  h2 {
-    color: $blue2;
-  }
-}
-
-.contentWrapper-3vHNP2 {
+// Emoji, gif, & sticker backgrounds
+#{wildcardGen("contentWrapper")} {
   background: $gray7;
 
-  .packHeader-w9jpYl,
-  .header-1ULbqO {
+  #{wildcardGen("packHeader")}, #{wildcardGen("header")} {
     background: none;
   }
 }
 
-.root-1CAIjD {
+[aria-modal="true"] > div {
   --modal-background: #{$gray7};
   --modal-footer-background: #{$gray8};
-  --header-secondary: #{$blue2};
-
+  --header-secondary: var(--heading-2-color);
+  
   h1 {
     color: $green1 !important;
   }
-
+  
   button {
     background: $gray7;
   }
 
-  .defaultColor-1EVLSt {
+  #{wildcardGen("defaultColor")} {
     color: var(--header-secondary);
   }
 }
 
-// forum backgrounds
-.container-3wLKDe {
-  background: $gray8;
+#{wildcardGen("container", "", ":has(div[role=\"grid\"])")} {
+  background: $gray7;
 }
 
-.autocomplete-3NRXG8 {
+#{wildcardGen("autocomplete")} {
   background: $gray8 !important;
 
-  .wrapper-1NNaWG {
+  &, #{wildcardGen("wrapper", "ul > ")} {
     background: $gray8 !important;
   }
 }
