@@ -83,14 +83,12 @@ $profile-border-radius: 12px;
 }
 
 // change the color of the top bar
-#{wildcardGen("title")} {
-  #{wildcardGen("themed", "&")} {
-    background-color: $gray8 !important;
-
-    // remove the channel header gradient thing
-    #{wildcardGen("children", "", "::after")} {
-      background: transparent;
-    }
+section[aria-label="Channel header"], main[aria-label="Friends"] > section {
+  background-color: $gray8 !important;
+  
+  // remove the channel header gradient thing
+  #{wildcardGen("children", "", "::after")} {
+    background: transparent;
   }
 }
 
