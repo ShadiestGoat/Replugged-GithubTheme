@@ -151,15 +151,16 @@ section[aria-label="Channel header"], main[aria-label="Friends"] > section {
   #{wildcardGen("buttons")} {
     align-self: end;
   }
+
+  // make the connections buttons not look ugly asf
   &:is(button) {
     background-color: transparent;
   }
 }
 
-#{wildcardGen("accountAddInner")} {
-  &:is(button) {
-    background-color: transparent;
-  }
+// special case for the "more" button
+#{wildcardGen("accountAddInner", "button")} {
+  background-color: transparent;
 }
 
 // Match message hover color in "Message Actions" buttons
@@ -177,6 +178,7 @@ section[aria-label="Channel header"], main[aria-label="Friends"] > section {
   }
 }
 
+// Modals
 [aria-modal="true"] > div {
   --modal-background: #{$gray7};
   --modal-footer-background: #{$gray8};
