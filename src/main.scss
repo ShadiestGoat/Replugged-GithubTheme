@@ -1,8 +1,7 @@
 @use "github" as *;
 
 @function wildcardGen($class, $prefix: "", $suffix: "") {
-  @return $prefix + '[class^="'+ $class + '-"]'+ $suffix + ", " + $prefix + '[class*=" '+ $class + '-"]'+
-    $suffix;
+  @return $prefix + '[class^="'+ $class + '-"]'+ $suffix + ", " + $prefix + '[class*=" '+ $class + '-"]' + $suffix;
 }
 
 $chat-border-color: $gray7;
@@ -88,9 +87,9 @@ $profile-border-radius: 12px;
   #{wildcardGen("themed", "&")} {
     background-color: $gray8 !important;
 
-    // remove the gradient thing on the side of the top bar
-    > .children-3xh0VB::after {
-      background-color: none;
+    // remove the channel header gradient thing
+    #{wildcardGen("children", "", "::after")} {
+      background: transparent;
     }
   }
 }
