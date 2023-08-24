@@ -1,7 +1,8 @@
 @use "github" as *;
 
 @function wildcardGen($class, $prefix: "", $suffix: "") {
-  @return $prefix + '[class^="'+ $class + '-"]'+ $suffix + ", " + $prefix + '[class*=" '+ $class + '-"]' + $suffix;
+  @return $prefix + '[class^="' + $class + '-"]' + $suffix + ", " + $prefix + '[class*=" ' + $class +
+    '-"]' + $suffix;
 }
 
 $chat-border-color: $gray7;
@@ -83,9 +84,10 @@ $profile-border-radius: 12px;
 }
 
 // change the color of the top bar
-section[aria-label="Channel header"], main[aria-label="Friends"] > section {
+section[aria-label="Channel header"],
+main[aria-label="Friends"] > section {
   background-color: $gray8 !important;
-  
+
   // remove the channel header gradient thing
   #{wildcardGen("children", "", "::after")} {
     background: transparent;
