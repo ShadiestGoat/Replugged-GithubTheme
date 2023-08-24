@@ -8,6 +8,7 @@
   "scripts": {
     "build": "replugged build theme",
     "watch": "replugged build theme --watch",
+    "release": "replugged release",
     "bundle": "replugged bundle theme",
     "lint": "prettier ./src --check",
     "lint:fix": "prettier ./src --write"
@@ -20,13 +21,13 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@parcel/config-default": "^2.8.3",
-    "@parcel/core": "^2.8.3",
-    "@types/node": "^18.11.15",
-    "prettier": "^2.8.1",
-    "replugged": "^4.2.1"
+    "@parcel/config-default": "^2.9.3",
+    "@parcel/core": "^2.9.3",
+    "@types/node": "^18.17.11",
+    "prettier": "^2.8.8",
+    "replugged": "^4.6.1"
   },
   "dependencies": {
-    "@parcel/transformer-sass": "^2.8.3"
+    "@parcel/transformer-sass": "^2.9.3"
   }
 }
