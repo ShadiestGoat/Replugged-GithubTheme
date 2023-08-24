@@ -154,6 +154,15 @@ $profile-border-radius: 12px;
   #{wildcardGen("buttons")} {
     align-self: end;
   }
+  &:is(button) {
+    background-color: transparent;
+  }
+}
+
+#{wildcardGen("accountAddInner")} {
+  &:is(button) {
+    background-color: transparent;
+  }
 }
 
 // Match message hover color in "Message Actions" buttons
