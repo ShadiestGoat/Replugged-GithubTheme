@@ -175,7 +175,7 @@ $profile-border-radius: 12px;
 
   #{wildcardGen("packHeader")},
   #{wildcardGen("header")} {
-    background-color: none;
+    background-color: transparent;
   }
 }
 
