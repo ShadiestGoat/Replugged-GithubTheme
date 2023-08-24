@@ -86,18 +86,18 @@ $profile-border-radius: 12px;
 // change the color of the top bar
 #{wildcardGen("title")} {
   #{wildcardGen("themed", "&")} {
-    background: $gray8 !important;
+    background-color: $gray8 !important;
 
     // remove the gradient thing on the side of the top bar
     > .children-3xh0VB::after {
-      background: none;
+      background-color: none;
     }
   }
 }
 
 // the badge saying "aka X name" should be darkened
 #{wildcardGen("akaBadge")} {
-  background: $gray9;
+  background-color: $gray9;
   padding: 3px 6px;
   box-sizing: content-box;
 }
@@ -115,14 +115,14 @@ $profile-border-radius: 12px;
   --inner-color: #{$gray8};
   --outer-color: #{$gray9};
 
-  background: var(--outer-color);
+  background-color: var(--outer-color);
 
   // Make the edit area, embeds, inline code, code blocks, and spoilers be considered inner content (and therefor change color on cover)
   #{wildcardGen("channelTextArea", "", " > div")},
   #{wildcardGen("embedWrapper", "article")},
   code,
   #{wildcardGen("spoilerMarkdownContent")} {
-    background: var(--inner-color);
+    background-color: var(--inner-color);
   }
 
   // Make the stuff mentioned above be colored with the outer color when editing it in the message
@@ -139,7 +139,7 @@ $profile-border-radius: 12px;
     #{wildcardGen("after_inlineCode")},
     #{wildcardGen("before_inlineCode")},
     #{wildcardGen("spoilerMarkdownContent")} {
-      background: var(--outer-color);
+      background-color: var(--outer-color);
     }
   }
 
@@ -158,16 +158,16 @@ $profile-border-radius: 12px;
 
 // Match message hover color in "Message Actions" buttons
 [aria-label="Message Actions"] > div {
-  background: $gray8;
+  background-color: $gray8;
 }
 
 // Emoji, gif, & sticker backgrounds
 #{wildcardGen("contentWrapper")} {
-  background: $gray7;
+  background-color: $gray7;
 
   #{wildcardGen("packHeader")},
   #{wildcardGen("header")} {
-    background: none;
+    background-color: none;
   }
 }
 
@@ -181,7 +181,7 @@ $profile-border-radius: 12px;
   }
 
   button {
-    background: $gray7;
+    background-color: $gray7;
   }
 
   #{wildcardGen("defaultColor")} {
@@ -190,14 +190,14 @@ $profile-border-radius: 12px;
 }
 
 #{wildcardGen("container", "", ":has(div[role=\"grid\"])")} {
-  background: $gray7;
+  background-color: $gray7;
 }
 
 #{wildcardGen("autocomplete")} {
-  background: $gray8 !important;
+  background-color: $gray8 !important;
 
   &,
   #{wildcardGen("wrapper", "ul > ")} {
-    background: $gray8 !important;
+    background-color: $gray8 !important;
   }
 }
