@@ -106,6 +106,18 @@ main[aria-label="Friends"] > section {
   }
 }
 
+// Rounded context menu 
+[aria-label="Message Actions"] {
+  &, > div {
+    border-radius: 12px;
+  }
+  
+  // remove the border around emotes
+  [id^="message-quickreact"] > * {
+    background-color: transparent;
+  }
+}
+
 // the badge saying "aka X name" should be darkened
 #{wildcardGen("akaBadge")} {
   background-color: $gray9;
