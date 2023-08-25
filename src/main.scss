@@ -40,6 +40,9 @@ $profile-border-radius: 12px;
 
   --heading-1-color: #{$green1};
   --heading-2-color: #{$blue2};
+
+  --scrollbar-auto-track: #{$gray8};
+  --scrollbar-auto-thumb: #{$gray6};
 }
 
 #{wildcardGen("container", "", ":has(> div[data-list-id^=\"forum-channel-\"])")},
