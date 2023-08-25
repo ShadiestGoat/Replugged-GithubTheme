@@ -44,7 +44,7 @@ $profile-border-radius: 12px;
 
 ul {
   &[aria-label="Channels"],
-  &[aria-label="Private channels"] {
+  &[aria-label="Direct Messages"] {
     --background-modifier-selected: #{$gray7};
     --background-modifier-active: #{$gray6};
   }
