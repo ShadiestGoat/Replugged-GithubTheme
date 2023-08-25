@@ -199,7 +199,7 @@ main[aria-label="Friends"] > section {
   }
 }
 
-#{wildcardGen("container", "", ":has(div[role=\"grid\"])")} {
+#{wildcardGen("container", "", ":has(> div[data-list-id^=\"forum-channel-\"])")} {
   background-color: $gray7;
 }
 
