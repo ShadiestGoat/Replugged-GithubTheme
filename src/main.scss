@@ -42,6 +42,11 @@ $profile-border-radius: 12px;
   --heading-2-color: #{$blue2};
 }
 
+ul[aria-label="Channels"] {
+  --background-modifier-selected: #{$gray7};
+  --background-modifier-active:   #{$gray6};
+}
+
 #{wildcardGen("actionIcon")},
 #{wildcardGen("iconContainer")} {
   svg {
