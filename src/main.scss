@@ -44,7 +44,7 @@ $profile-border-radius: 12px;
 
 ul[aria-label="Channels"] {
   --background-modifier-selected: #{$gray7};
-  --background-modifier-active:   #{$gray6};
+  --background-modifier-active: #{$gray6};
 }
 
 #{wildcardGen("actionIcon")},
