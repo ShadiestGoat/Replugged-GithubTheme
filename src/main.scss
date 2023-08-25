@@ -30,9 +30,9 @@ $profile-border-radius: 12px;
 
   --text-positive: #{$green2};
 
-  --background-modifier-selected: #{$gray8};
+  --background-modifier-selected: #{$gray7};
   --background-modifier-hover: #{$gray6};
-  --background-modifier-active: #{$gray8};
+  --background-modifier-active: #{$gray6};
   --background-modifier-accent: #{$gray6};
 
   --chanel-icon: #{$blue0};
@@ -42,12 +42,13 @@ $profile-border-radius: 12px;
   --heading-2-color: #{$blue2};
 }
 
-ul {
-  &[aria-label="Channels"],
-  &[aria-label="Direct Messages"] {
-    --background-modifier-selected: #{$gray7};
-    --background-modifier-active: #{$gray6};
-  }
+#{wildcardGen("container", "", ":has(> div[data-list-id^=\"forum-channel-\"])")},
+#{wildcardGen("content", "", ":has(> div[role=\"grid\"])")} {
+  --background-modifier-selected: #{$gray8};
+  --background-modifier-active: #{$gray8};
+  --background-modifier-hover: #{$gray8};
+
+  background-color: $gray7;
 }
 
 #{wildcardGen("actionIcon")},
@@ -205,10 +206,6 @@ main[aria-label="Friends"] > section {
   #{wildcardGen("defaultColor")} {
     color: var(--header-secondary);
   }
-}
-
-#{wildcardGen("container", "", ":has(> div[data-list-id^=\"forum-channel-\"])")} {
-  background-color: $gray7;
 }
 
 #{wildcardGen("autocomplete")} {
