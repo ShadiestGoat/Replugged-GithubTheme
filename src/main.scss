@@ -191,9 +191,10 @@ div[id$="-picker-tab-panel"] {
   --background-primary: #{$gray7};
 
   background-color: $bg1 !important;
-  
+
   > div > #{wildcard("rail")} {
-    &, & > div {
+    &,
+    & > div {
       background-color: $bg1 !important;
     }
   }
