@@ -186,3 +186,19 @@ div[id$="-picker-tab-panel"] {
 #{wildcard("emptyChannelIcon")} {
   background-color: transparent;
 }
+
+#{wildcard("autocomplete")}:has(> #{wildcard("autocompleteInner")}) {
+  --background-primary: #{$gray7};
+
+  background-color: $bg1 !important;
+  
+  > div > #{wildcard("rail")} {
+    &, & > div {
+      background-color: $bg1 !important;
+    }
+  }
+
+  #{wildcard("categoryHeader")} {
+    background-color: $bg1;
+  }
+}
