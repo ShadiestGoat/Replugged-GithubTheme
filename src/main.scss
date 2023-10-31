@@ -163,6 +163,7 @@ div[id$="-picker-tab-panel"] {
   box-sizing: content-box !important;
 }
 
+// The stupid ugly fucking stupid idiotic light modals
 .theme-light > [role="dialog"] {
   --background-modifier-hover: #{$bg2};
   --background-modifier-active: #{$bg2};
@@ -171,7 +172,13 @@ div[id$="-picker-tab-panel"] {
   --header-primary: #{$color-h1} !important; 
 }
 
+// Lighter guild header menu
 [id="guild-header-popout"] {
   --background-floating: #{$bg2};
   border-radius: $border-radius !important;
+}
+
+// Don't color backgrounds of the channel icons
+#{wildcard("emptyChannelIcon")} {
+  background-color: transparent;
 }
