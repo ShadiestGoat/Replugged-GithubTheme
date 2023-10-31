@@ -1,7 +1,7 @@
 @use "github" as *;
 
 @function wildcard($class) {
-  @return '[class*="' + $class + '_"]'
+  @return '[class*="' + $class + '_"]';
 }
 
 $bg0: $black;
@@ -14,7 +14,8 @@ $border-radius: 25px;
 $color-h: $blue2;
 $color-h1: $green2;
 
-.theme-dark, .theme-light > [role="dialog"] {
+.theme-dark,
+.theme-light > [role="dialog"] {
   --background-primary: #{$bg0} !important;
   --background-secondary: #{$bg1} !important;
   --background-secondary-alt: #{$bg1} !important;
@@ -23,7 +24,7 @@ $color-h1: $green2;
   --text-normal: #{$white} !important;
 
   --__spoiler-background-color--hidden: #{$bg1} !important;
-  --__spoiler-background-color--hidden--hover:  #{$bg2} !important;
+  --__spoiler-background-color--hidden--hover: #{$bg2} !important;
   --__spoiler-background-color--revealed: #{$bg2} !important;
 
   --background-floating: #{$bg1} !important;
@@ -71,7 +72,9 @@ section#{wildcard("container")}:has(> #{wildcard("upperContainer")}) {
   h1 {
     color: $color-h1 !important;
   }
-  h2, h3, h4 {
+  h2,
+  h3,
+  h4 {
     color: $color-h !important;
   }
 }
@@ -104,7 +107,8 @@ section#{wildcard("container")}:has(> #{wildcard("upperContainer")}) {
 
 // forum backgrounds
 #{wildcard("chatContainer")} > #{wildcard("container")} {
-  &:has(> #{wildcard("grid")}), &:has(> div[data-list-id^="forum-channel"]) {
+  &:has(> #{wildcard("grid")}),
+  &:has(> div[data-list-id^="forum-channel"]) {
     background: $bg0 !important;
 
     // forum post
@@ -113,7 +117,7 @@ section#{wildcard("container")}:has(> #{wildcard("upperContainer")}) {
       --background-modifier-hover: #{$gray7} !important;
       --background-modifier-active: #{$gray7} !important;
       --background-modifier-selected: #{$bg2} !important;
-  
+
       #{wildcard("textContentFooter")} {
         background: none !important;
       }
@@ -152,8 +156,8 @@ div[id$="-picker-tab-panel"] {
 // User Area
 #{wildcard("sidebar")} > section#{wildcard("panels")} > #{wildcard("container")} {
   box-shadow: 0 0 15px -5px $green2;
-  border-top-left-radius: $border-radius*0.75;
-  border-top-right-radius: $border-radius*0.75;
+  border-top-left-radius: $border-radius * 0.75;
+  border-top-right-radius: $border-radius * 0.75;
 }
 
 // Aka badge
@@ -169,7 +173,7 @@ div[id$="-picker-tab-panel"] {
   --background-modifier-active: #{$bg2};
   --background-modifier-selected: #{$bg1};
   --header-secondary: #{$color-h} !important;
-  --header-primary: #{$color-h1} !important; 
+  --header-primary: #{$color-h1} !important;
 }
 
 // Lighter guild header menu
