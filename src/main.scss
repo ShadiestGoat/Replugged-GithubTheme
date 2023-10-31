@@ -1,233 +1,177 @@
 @use "github" as *;
 
-@function wildcardGen($class, $prefix: "", $suffix: "") {
-  @return $prefix + '[class^="' + $class + '-"]' + $suffix + ", " + $prefix + '[class*=" ' + $class +
-    '-"]' + $suffix;
+@function wildcard($class) {
+  @return '[class*="' + $class + '_"]'
 }
 
-$chat-border-color: $gray7;
-$profile-border-radius: 12px;
+$bg0: $black;
+$bg1: $gray9;
+$bg2: $gray8;
+$border-color: $gray6;
+$border: 1px solid $border-color;
+$top-bar-height: 48px;
+$border-radius: 25px;
+$color-h: $blue2;
+$color-h1: $green2;
 
-:root {
-  --search-popout-option-non-text-color: #{$gray2};
-  --search-popout-option-filter-color: #{$gray2};
-  --search-popout-option-answer-color: #{$gray2};
-  --search-popout-date-picker-hint-text: #{$gray2};
-  --channeltextarea-background: #{$gray9};
+.theme-dark, .theme-light > [role="dialog"] {
+  --background-primary: #{$bg0} !important;
+  --background-secondary: #{$bg1} !important;
+  --background-secondary-alt: #{$bg1} !important;
+  --background-tertiary: #{$bg2} !important;
+  --channeltextarea-background: #{$bg1} !important;
+  --text-normal: #{$white} !important;
 
-  --text-links: #{$blue2};
-  --text-normal: #{$gray1};
-  --text-muted: #{$gray2};
+  --__spoiler-background-color--hidden: #{$bg1} !important;
+  --__spoiler-background-color--hidden--hover:  #{$bg2} !important;
+  --__spoiler-background-color--revealed: #{$bg2} !important;
 
-  --header-primary: #{$gray1};
-  --header-secondary: #{$gray2};
+  --background-floating: #{$bg1} !important;
 
-  --background-primary: #{$gray9};
-  --background-secondary: #{$gray8};
-  --background-secondary-alt: #{$gray8};
-  --background-tertiary: #{$gray7};
-  --background-accent: #{$gray8};
+  --scrollbar-auto-track: #{$gray7} !important;
+  --scrollbar-auto-thumb: #{$gray9} !important;
 
-  --text-positive: #{$green2};
+  --background-message-hover: #{rgba($bg1, 0.25)} !important;
 
-  --background-modifier-selected: #{$gray7};
-  --background-modifier-hover: #{$gray6};
-  --background-modifier-active: #{$gray6};
-  --background-modifier-accent: #{$gray6};
+  --modal-background: #{$bg1} !important;
+  --modal-footer-background: #{$bg1} !important;
 
-  --chanel-icon: #{$blue0};
-  --channels-default: #{$blue0};
-
-  --heading-1-color: #{$green1};
-  --heading-2-color: #{$blue2};
-
-  --scrollbar-auto-track: #{$gray8};
-  --scrollbar-auto-thumb: #{$gray6};
+  --background-modifier-hover: #{$bg2} !important;
+  --background-modifier-active: #{$bg2} !important;
+  --background-modifier-selected: #{$gray7} !important;
 }
 
-#{wildcardGen("container", "", ":has(> div[data-list-id^=\"forum-channel-\"])")},
-#{wildcardGen("content", "", ":has(> div[role=\"grid\"])")} {
-  --background-modifier-selected: #{$gray8};
-  --background-modifier-active: #{$gray8};
-  --background-modifier-hover: #{$gray8};
+// Header bars
+section#{wildcard("container")}:has(> #{wildcard("upperContainer")}) {
+  background-color: var(--background-primary);
+  border-bottom: $border;
+  height: $top-bar-height;
 
-  background-color: $gray7;
-}
-
-#{wildcardGen("actionIcon")},
-#{wildcardGen("iconContainer")} {
-  svg {
-    color: $blue0;
+  &:has(#{wildcard("addFriend")}) {
+    // ????? don't ask
+    height: $top-bar-height + 1;
   }
 }
 
-// Set default username color to be green in the member list
-#{wildcardGen("desaturateUserColors")} {
-  color: $green0;
+// Make the guild bar be considered a primary bg
+[data-list-id="guildsnav"] {
+  background-color: var(--background-primary);
 }
 
-// Remove the gift nitro button
-*[aria-label="Send a gift"] {
-  display: none;
+// The search bar in the private channel list & the guild header
+#{wildcard("privateChannels")} > #{wildcard("searchBar")},
+#{wildcard("container")} > header#{wildcard("header")} {
+  background-color: var(--background-primary);
+  border-bottom: $border;
+  height: $top-bar-height;
 }
 
-// Add a border around the "new message" input AND ONLY AROUND THAT
-#{wildcardGen("form", "")} {
-  #{wildcardGen("channelTextArea", " > ")} {
-    border: $chat-border-color solid 4px;
-  }
-}
-
-// Add a border onto the reply bar (I think the other border is overwritten? Not 100% sure)
-#{wildcardGen("clipContainer")} {
-  border-top: $chat-border-color solid 3px;
-}
-
-// Add a little glow to the profile menu
-[aria-label="User area"] {
-  box-shadow: 0 0 15px -5px $green2;
-
-  // Round corners of your profile menu
-  &,
-  #{wildcardGen("container")} {
-    border-top-left-radius: $profile-border-radius;
-    border-top-right-radius: $profile-border-radius;
-  }
-}
-
-// change the color of the top bar
-section[aria-label="Channel header"],
-main[aria-label="Friends"] > section {
-  background-color: $gray8 !important;
-
-  // remove the channel header gradient thing
-  #{wildcardGen("children", "", "::after")} {
-    background: transparent;
-  }
-}
-
-// Rounded context menu 
-[aria-label="Message Actions"] {
-  &, > div {
-    border-radius: 12px;
-  }
-  
-  // remove the border around emotes
-  [id^="message-quickreact"] > * {
-    background-color: transparent;
-  }
-}
-
-// the badge saying "aka X name" should be darkened
-#{wildcardGen("akaBadge")} {
-  background-color: $gray9;
-  padding: 3px 6px;
-  box-sizing: content-box;
-}
-
-// Make hover message obvious
-#{wildcardGen("messageListItem")} {
-  // Make headings their special color
+// Color the headings of messages (and don't pollute other headings)
+#{wildcard("messageContent")} {
   h1 {
-    color: var(--heading-1-color);
+    color: $color-h1 !important;
   }
-  h2 {
-    color: var(--heading-2-color);
-  }
-
-  --inner-color: #{$gray8};
-  --outer-color: #{$gray9};
-
-  background-color: var(--outer-color);
-
-  // Make the edit area, embeds, inline code, code blocks, and spoilers be considered inner content (and therefor change color on cover)
-  #{wildcardGen("channelTextArea", "", " > div")},
-  #{wildcardGen("embedWrapper", "article")},
-  code,
-  #{wildcardGen("spoilerMarkdownContent")} {
-    background-color: var(--inner-color);
-  }
-
-  // Make the stuff mentioned above be colored with the outer color when editing it in the message
-  #{wildcardGen("channelTextArea")} {
-    > #{wildcardGen("scrollableContainer")} {
-      border: $chat-border-color solid 4px;
-    }
-
-    #{wildcardGen("embedWrapper", "article")},
-    #{wildcardGen("inlineCode")},
-    #{wildcardGen("codeLine")},
-    // Code blocks need some... extra setup... this is the ``` parts
-    #{wildcardGen("codeBlockSyntax", "div[data-slate-node=\"element\"]:has(>span>span", ")")},
-    #{wildcardGen("after_inlineCode")},
-    #{wildcardGen("before_inlineCode")},
-    #{wildcardGen("spoilerMarkdownContent")} {
-      background-color: var(--outer-color);
-    }
-  }
-
-  &:hover {
-    --inner-color: #{$gray9};
-    --outer-color: #{$gray8};
+  h2, h3, h4 {
+    color: $color-h !important;
   }
 }
 
-// Make the 'no typing indicator' and the emote button be at the bottom when editing a message
-#{wildcardGen("inner")} {
-  #{wildcardGen("buttons")} {
-    align-self: end;
-  }
+// Make the rest of the really big headings green
+#{wildcard("heading-xxl-extrabold")} {
+  color: $color-h1 !important;
+}
 
-  // make the connections buttons not look ugly asf
-  &:is(button) {
-    background-color: transparent;
+// Message buttons
+#{wildcard("buttonContainer")} > div > #{wildcard("buttonsInner")} {
+  background-color: $bg1;
+  border-radius: $border-radius !important;
+}
+
+[id="message"][role="menu"],
+[id="thread-context"][role="menu"],
+[id="message-actions"] {
+  background-color: $bg1;
+  border-radius: $border-radius !important;
+
+  #{wildcard("customItem")} > div {
+    background-color: $bg1;
+
+    &:hover {
+      background-color: $bg2;
+    }
   }
 }
 
-// special case for the "more" button
-#{wildcardGen("accountAddInner", "button")} {
+// forum backgrounds
+#{wildcard("chatContainer")} > #{wildcard("container")} {
+  &:has(> #{wildcard("grid")}), &:has(> div[data-list-id^="forum-channel"]) {
+    background: $bg0 !important;
+
+    // forum post
+    #{wildcard("mainCard")} {
+      --background-primary: #{$bg1};
+      --background-modifier-hover: #{$gray7} !important;
+      --background-modifier-active: #{$gray7} !important;
+      --background-modifier-selected: #{$bg2} !important;
+  
+      #{wildcard("textContentFooter")} {
+        background: none !important;
+      }
+
+      #{wildcard("contentPreview")} {
+        background: $bg0 !important;
+      }
+    }
+  }
+}
+
+#{wildcard("chatLayerWrapper")} > div {
+  border-radius: 0 !important;
+  border: 0 !important;
+  filter: none !important;
+
+  > #{wildcard("chat")} {
+    filter: drop-shadow(0 8px 40px rgba($bg0, 1));
+  }
+}
+
+#{wildcard("connectionsContainer")} button {
   background-color: transparent;
 }
 
-// Match message hover color in "Message Actions" buttons
-[aria-label="Message Actions"] > div {
-  background-color: $gray8;
-}
+// Emoji & Sticker picker
+div[id$="-picker-tab-panel"] {
+  --background-accent: #{$gray7};
 
-// Emoji, gif, & sticker backgrounds
-#{wildcardGen("contentWrapper")} {
-  background-color: $gray7;
-
-  #{wildcardGen("packHeader")},
-  #{wildcardGen("header")} {
-    background-color: transparent;
+  > #{wildcard("categoryList")} {
+    --background-primary: #{$bg2};
+    background: $bg1;
   }
 }
 
-// Modals
-[aria-modal="true"] > div {
-  --modal-background: #{$gray7};
-  --modal-footer-background: #{$gray8};
-  --header-secondary: var(--heading-2-color);
-
-  h1 {
-    color: $green1 !important;
-  }
-
-  button {
-    background-color: $gray7;
-  }
-
-  #{wildcardGen("defaultColor")} {
-    color: var(--header-secondary);
-  }
+// User Area
+#{wildcard("sidebar")} > section#{wildcard("panels")} > #{wildcard("container")} {
+  box-shadow: 0 0 15px -5px $green2;
+  border-top-left-radius: $border-radius*0.75;
+  border-top-right-radius: $border-radius*0.75;
 }
 
-#{wildcardGen("autocomplete")} {
-  background-color: $gray8 !important;
+// Aka badge
+#{wildcard("akaBadge")} {
+  background-color: $bg2 !important;
+  padding: 3px 6px !important;
+  box-sizing: content-box !important;
+}
 
-  &,
-  #{wildcardGen("wrapper", "ul > ")} {
-    background-color: $gray8 !important;
-  }
+.theme-light > [role="dialog"] {
+  --background-modifier-hover: #{$bg2};
+  --background-modifier-active: #{$bg2};
+  --background-modifier-selected: #{$bg1};
+  --header-secondary: #{$color-h} !important;
+  --header-primary: #{$color-h1} !important; 
+}
+
+[id="guild-header-popout"] {
+  --background-floating: #{$bg2};
+  border-radius: $border-radius !important;
 }
