@@ -40,6 +40,9 @@ $color-h1: $green2;
   --background-modifier-hover: #{$bg2} !important;
   --background-modifier-active: #{$bg2} !important;
   --background-modifier-selected: #{$gray7} !important;
+
+  --home-background: #{$bg1} !important;
+  --__header-bar-background: #{$black} !important;
 }
 
 // Header bars
