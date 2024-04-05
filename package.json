@@ -5,6 +5,7 @@
   "engines": {
     "node": ">=14.0.0"
   },
+  "private": true,
   "scripts": {
     "build": "replugged build theme",
     "watch": "replugged build theme --watch",
@@ -21,13 +22,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@parcel/config-default": "^2.10.1",
-    "@parcel/core": "^2.10.1",
-    "@types/node": "^18.18.7",
-    "prettier": "^2.8.8",
-    "replugged": "^4.7.4"
-  },
-  "dependencies": {
-    "@parcel/transformer-sass": "^2.10.1"
+    "prettier": "^3.2.5",
+    "replugged": "^4.7.9"
   }
 }
