@@ -45,29 +45,26 @@ $color-h1: $green2;
   --__header-bar-background: #{$black} !important;
 }
 
-// Header bars
-section#{wildcard("container")}:has(> #{wildcard("upperContainer")}) {
+@mixin topBar($heighDelta: 0px) {
   background-color: var(--background-primary);
   border-bottom: $border;
-  height: $top-bar-height;
+  height: calc($top-bar-height + $heighDelta);
+}
 
-  &:has(#{wildcard("addFriend")}) {
-    // ????? don't ask
-    height: $top-bar-height + 1;
-  }
+// Forum & other channel headers
+section#{wildcard("container")}:has(> #{wildcard("upperContainer")}),
+#{wildcard("container")} > header#{wildcard("header")} {
+  @include topBar;
+}
+
+// The search bar needs to be offset by 1 bc of border (I think)
+#{wildcard("privateChannels")} > #{wildcard("searchBar")} {
+  @include topBar(-1px);
 }
 
 // Make the guild bar be considered a primary bg
 [data-list-id="guildsnav"] {
   background-color: var(--background-primary);
-}
-
-// The search bar in the private channel list & the guild header
-#{wildcard("privateChannels")} > #{wildcard("searchBar")},
-#{wildcard("container")} > header#{wildcard("header")} {
-  background-color: var(--background-primary);
-  border-bottom: $border;
-  height: $top-bar-height;
 }
 
 // Color the headings of messages (and don't pollute other headings)
@@ -179,7 +176,7 @@ div[id$="-picker-tab-panel"] {
   box-sizing: content-box !important;
 }
 
-// The stupid ugly fucking stupid idiotic light modals
+// The silly :3 light modals
 .theme-light > [role="dialog"] {
   --background-modifier-hover: #{$bg2};
   --background-modifier-active: #{$bg2};
