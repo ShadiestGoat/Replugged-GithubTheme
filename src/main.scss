@@ -228,10 +228,10 @@ div#{wildcard("pollContainer")} {
       font-size: 1.5rem !important;
     }
     > a {
-      align-self: center
+      align-self: center;
     }
   }
-  
+
   > ul > li {
     --bg-mod-faint: transparent;
 
