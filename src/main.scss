@@ -203,3 +203,8 @@ div[id$="-picker-tab-panel"] {
     background-color: $bg1;
   }
 }
+
+// Darken inline code while editing text (markdown fuckery)
+div[role="textbox"] span[class*="inlineCode"] {
+  background: $bg2;
+}
