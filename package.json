@@ -5,6 +5,7 @@
   "engines": {
     "node": ">=14.0.0"
   },
+  "private": true,
   "scripts": {
     "build": "replugged build theme",
     "watch": "replugged build theme --watch",
