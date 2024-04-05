@@ -156,13 +156,13 @@ div[id$="-picker-tab-panel"] {
 // User Area (bottom left)
 #{wildcard("sidebar")} > section#{wildcard("panels")} {
   // VC chat has a little bar on top
-  & > #{wildcard("wrapper")} > div {
+  > #{wildcard("wrapper")} > div {
     border-bottom: 0;
     border-top: 1px solid var(--background-modifier-accent);
   }
 
   // Add a lil glow to the area
-  & > #{wildcard("container")} {
+  > #{wildcard("container")} {
     box-shadow: 0 0 15px -5px $green2;
     border-top-left-radius: $border-radius * 0.75;
     border-top-right-radius: $border-radius * 0.75;
@@ -203,7 +203,7 @@ div[id$="-picker-tab-panel"] {
 
   > div > #{wildcard("rail")} {
     &,
-    & > div {
+    > div {
       background-color: $bg1 !important;
     }
   }
@@ -216,4 +216,27 @@ div[id$="-picker-tab-panel"] {
 // Darken inline code while editing text (markdown fuckery)
 div[role="textbox"] span[class*="inlineCode"] {
   background: $bg2;
+}
+
+// polls
+div#{wildcard("pollContainer")} {
+  background-color: transparent;
+
+  > div#{wildcard("header")} {
+    > h4 {
+      color: $color-h1;
+      font-size: 1.5rem !important;
+    }
+    > a {
+      align-self: center
+    }
+  }
+  
+  > ul > li {
+    --bg-mod-faint: transparent;
+
+    &#{wildcard("normalStylesDefault")} {
+      --custom-poll-style-vote-percentage: #{$bg1};
+    }
+  }
 }
