@@ -153,11 +153,20 @@ div[id$="-picker-tab-panel"] {
   }
 }
 
-// User Area
-#{wildcard("sidebar")} > section#{wildcard("panels")} > #{wildcard("container")} {
-  box-shadow: 0 0 15px -5px $green2;
-  border-top-left-radius: $border-radius * 0.75;
-  border-top-right-radius: $border-radius * 0.75;
+// User Area (bottom left)
+#{wildcard("sidebar")} > section#{wildcard("panels")} {
+  // VC chat has a little bar on top
+  & > #{wildcard("wrapper")} > div {
+    border-bottom: 0;
+    border-top: 1px solid var(--background-modifier-accent);
+  }
+
+  // Add a lil glow to the area
+  & > #{wildcard("container")} {
+    box-shadow: 0 0 15px -5px $green2;
+    border-top-left-radius: $border-radius * 0.75;
+    border-top-right-radius: $border-radius * 0.75;
+  }
 }
 
 // Aka badge
